@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopEase – Home</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand"><span>🛍️</span> ShopEase</a>
+  <div class="nav-links">
+    <a href="index.html"><span>🏠</span> Home</a>
+    <a href="add-product.html"><span>➕</span> Add Product</a>
+    <a href="view-products.html"><span>📦</span> Products</a>
+    <a href="cart.html" class="cart-icon">
+      🛒 Cart
+      <span class="cart-badge" id="cart-badge" style="display:none">0</span>
+    </a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-header">
+    <div>
+      <div class="page-title">Discover Products</div>
+      <div class="page-subtitle" id="product-count">Loading...</div>
+    </div>
+    <a href="add-product.html" class="btn btn-primary">➕ Add Product</a>
+  </div>
+
+  <div class="toolbar">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search" placeholder="Search products..." />
+    </div>
+    <select id="filter-category">
+      <option value="">All Categories</option>
+    </select>
+    <select id="sort">
+      <option value="">Sort By</option>
+      <option value="price-asc">Price: Low → High</option>
+      <option value="price-desc">Price: High → Low</option>
+      <option value="name-asc">Name: A → Z</option>
+      <option value="name-desc">Name: Z → A</option>
+    </select>
+  </div>
+
+  <div class="products-grid" id="products-grid"></div>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/index.js"></script>
+</body>
+</html>
