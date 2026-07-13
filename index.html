@@ -1,59 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ShopEase – Home</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopEase – Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-
 <body>
 
-    <nav>
-        <a href="index.html" class="nav-brand"><span>🛍️</span> ShopEase</a>
-        <div class="nav-links">
-            <a href="index.html"><span>🏠</span> Home</a>
-            <a href="add-product.html"><span>➕</span> Add Product</a>
-            <a href="view-products.html"><span>📦</span> Products</a>
-            <a href="cart.html" class="cart-icon">
-                🛒 Cart
-                <span class="cart-badge" id="cart-badge" style="display:none">0</span>
-            </a>
-        </div>
-    </nav>
-
+  <nav class="navbar navbar-expand-lg sticky-top site-nav">
     <div class="container">
-        <div class="page-header">
-            <div>
-                <div class="page-title">Discover Products</div>
-                <div class="page-subtitle" id="product-count">Loading...</div>
-            </div>
-            <a href="add-product.html" class="btn btn-primary">➕ Add Product</a>
+      <a class="navbar-brand brand" href="index.html">🛍️ ShopEase</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="add-product.html">Add Product</a></li>
+          <li class="nav-item"><a class="nav-link" href="view-products.html">View Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-3">
+          <div class="search-wrap">
+            <span>🔍</span>
+            <input type="text" placeholder="Search products..." />
+          </div>
+          <a href="cart.html" class="nav-ico cart-btn">🛒<span class="cbadge" id="cart-badge" style="display:none">0</span></a>
+          <a href="#" class="nav-ico">👤</a>
         </div>
-
-        <div class="toolbar">
-            <div class="search-box">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="search" placeholder="Search products..." />
-            </div>
-            <select id="filter-category">
-                <option value="">All Categories</option>
-            </select>
-            <select id="sort">
-                <option value="">Sort By</option>
-                <option value="price-asc">Price: Low → High</option>
-                <option value="price-desc">Price: High → Low</option>
-                <option value="name-asc">Name: A → Z</option>
-                <option value="name-desc">Name: Z → A</option>
-            </select>
-        </div>
-
-        <div class="products-grid" id="products-grid"></div>
+      </div>
     </div>
+  </nav>
 
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/index.js"></script>
+  <section class="hero">
+    <div class="container">
+      <div class="row align-items-center" style="min-height:80vh">
+        <div class="col-lg-6">
+          <span class="pill mb-3 d-inline-block">✨ New Arrivals 2025</span>
+          <h1>Discover <span class="grad">Amazing</span><br>Products For You</h1>
+          <p class="hero-sub">Shop the latest trends with unbeatable prices. Fast delivery &amp; hassle-free returns.</p>
+          <div class="d-flex gap-3 mt-4 flex-wrap">
+            <a href="#products" class="btn-main">Shop Now →</a>
+            <a href="#categories" class="btn-ghost">Browse Categories</a>
+          </div>
+          <div class="hero-stats mt-5">
+            <div><span class="snum">50K+</span><span class="slbl">Products</span></div>
+            <div class="sdiv"></div>
+            <div><span class="snum">120K+</span><span class="slbl">Customers</span></div>
+            <div class="sdiv"></div>
+            <div><span class="snum">4.9★</span><span class="slbl">Rating</span></div>
+          </div>
+        </div>
+        <div class="col-lg-6 mt-5 mt-lg-0 text-center">
+          <div class="hero-img-wrap">
+            <img src="assets/images/hero.jpg" alt="Hero" class="hero-img" />
+            <div class="fcard fc1">🔥<div><b>Hot Deal</b><small>Up to 40% off</small></div></div>
+            <div class="fcard fc2">📦<div><b>Free Shipping</b><small>Orders ₹999+</small></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-bar">
+    <div class="container">
+      <div class="row g-3 text-center text-md-start">
+        <div class="col-6 col-md-3"><div class="trust-item">🚚<div><b>Free Delivery</b><small>Orders over ₹999</small></div></div></div>
+        <div class="col-6 col-md-3"><div class="trust-item">🔄<div><b>Easy Returns</b><small>30-day policy</small></div></div></div>
+        <div class="col-6 col-md-3"><div class="trust-item">🔒<div><b>Secure Payment</b><small>100% protected</small></div></div></div>
+        <div class="col-6 col-md-3"><div class="trust-item">🎧<div><b>24/7 Support</b><small>Always here</small></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="categories">
+    <div class="container">
+      <div class="sec-head text-center mb-5">
+        <span class="pill">Browse By</span>
+        <h2>Shop by Category</h2>
+        <p>Find exactly what you're looking for</p>
+      </div>
+      <div class="row g-3">
+        <div class="col-6 col-md-4 col-lg-2"><a href="#" class="cat-card c1">📱<span>Electronics</span><small>240 items</small></a></div>
+        <div class="col-6 col-md-4 col-lg-2"><a href="#" class="cat-card c2">👗<span>Clothing</span><small>580 items</small></a></div>
+        <div class="col-6 col-md-4 col-lg-2"><a href="#" class="cat-card c3">👟<span>Footwear</span><small>320 items</small></a></div>
+        <div class="col-6 col-md-4 col-lg-2"><a href="#" class="cat-card c4">👜<span>Accessories</span><small>410 items</small></a></div>
+        <div class="col-6 col-md-4 col-lg-2"><a href="#" class="cat-card c5">🏠<span>Home</span><small>190 items</small></a></div>
+        <div class="col-6 col-md-4 col-lg-2"><a href="#" class="cat-card c6">⚽<span>Sports</span><small>275 items</small></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-white" id="products">
+    <div class="container">
+      <div class="sec-head text-center mb-4">
+        <span class="pill">Hand Picked</span>
+        <h2>Featured Products</h2>
+        <p>Curated just for you</p>
+      </div>
+      <div class="filter-tabs mb-4">
+        <button class="ftab active" onclick="filter('all',this)">All</button>
+        <button class="ftab" onclick="filter('Electronics',this)">Electronics</button>
+        <button class="ftab" onclick="filter('Clothing',this)">Clothing</button>
+        <button class="ftab" onclick="filter('Footwear',this)">Footwear</button>
+        <button class="ftab" onclick="filter('Accessories',this)">Accessories</button>
+      </div>
+      <div class="row g-4" id="products-grid">
+
+        <div class="col-sm-6 col-lg-3 pcol" data-cat="Electronics">
+          <div class="pcard">
+            <div class="pimg"><img src="assets/images/headphones.jpg" alt="Headphones"><span class="pbadge hot">🔥 Hot</span><div class="pover"><button>👁</button><button>❤️</button></div></div>
+            <div class="pbody"><small>Electronics</small><h6>Wireless Headphones</h6><div class="stars">⭐⭐⭐⭐⭐ <span>(128)</span></div><div class="prices"><b>₹6,599</b><s>₹10,999</s></div></div>
+            <div class="pfooter"><a href="single-product.html?id=p1" class="btn-out">View</a><button class="btn-add" onclick="addToCart('p1','Wireless Headphones',6599)">🛒 Add</button></div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3 pcol" data-cat="Footwear">
+          <div class="pcard">
+            <div class="pimg"><img src="assets/images/sneakers.jpg" alt="Sneakers"><span class="pbadge new">✨ New</span><div class="pover"><button>👁</button><button>❤️</button></div></div>
+            <div class="pbody"><small>Footwear</small><h6>Running Sneakers</h6><div class="stars">⭐⭐⭐⭐⭐ <span>(94)</span></div><div class="prices"><b>₹9,999</b><s>₹13,499</s></div></div>
+            <div class="pfooter"><a href="single-product.html?id=p2" class="btn-out">View</a><button class="btn-add" onclick="addToCart('p2','Running Sneakers',9999)">🛒 Add</button></div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3 pcol" data-cat="Accessories">
+          <div class="pcard">
+            <div class="pimg"><img src="assets/images/wallet.jpg" alt="Wallet"><div class="pover"><button>👁</button><button>❤️</button></div></div>
+            <div class="pbody"><small>Accessories</small><h6>Leather Wallet</h6><div class="stars">⭐⭐⭐⭐ <span>(67)</span></div><div class="prices"><b>₹2,999</b></div></div>
+            <div class="pfooter"><a href="single-product.html?id=p3" class="btn-out">View</a><button class="btn-add" onclick="addToCart('p3','Leather Wallet',2999)">🛒 Add</button></div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3 pcol" data-cat="Electronics">
+          <div class="pcard">
+            <div class="pimg"><img src="assets/images/smartwatch.jpg" alt="Watch"><span class="pbadge sale">💸 Sale</span><div class="pover"><button>👁</button><button>❤️</button></div></div>
+            <div class="pbody"><small>Electronics</small><h6>Smart Watch</h6><div class="stars">⭐⭐⭐⭐⭐ <span>(203)</span></div><div class="prices"><b>₹16,999</b><s>₹24,999</s></div></div>
+            <div class="pfooter"><a href="single-product.html?id=p4" class="btn-out">View</a><button class="btn-add" onclick="addToCart('p4','Smart Watch',16999)">🛒 Add</button></div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3 pcol" data-cat="Clothing">
+          <div class="pcard">
+            <div class="pimg"><img src="assets/images/jacket.jpg" alt="Jacket"><span class="pbadge new">✨ New</span><div class="pover"><button>👁</button><button>❤️</button></div></div>
+            <div class="pbody"><small>Clothing</small><h6>Denim Jacket</h6><div class="stars">⭐⭐⭐⭐ <span>(55)</span></div><div class="prices"><b>₹5,499</b><s>₹7,499</s></div></div>
+            <div class="pfooter"><a href="single-product.html?id=p5" class="btn-out">View</a><button class="btn-add" onclick="addToCart('p5','Denim Jacket',5499)">🛒 Add</button></div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3 pcol" data-cat="Accessories">
+          <div class="pcard">
+            <div class="pimg"><img src="assets/images/sunglasses.jpg" alt="Sunglasses"><div class="pover"><button>👁</button><button>❤️</button></div></div>
+            <div class="pbody"><small>Accessories</small><h6>Sunglasses</h6><div class="stars">⭐⭐⭐⭐ <span>(81)</span></div><div class="prices"><b>₹4,199</b></div></div>
+            <div class="pfooter"><a href="single-product.html?id=p8" class="btn-out">View</a><button class="btn-add" onclick="addToCart('p8','Sunglasses',4199)">🛒 Add</button></div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3 pcol" data-cat="Electronics">
+          <div class="pcard">
+            <div class="pimg"><img src="assets/images/coffee.jpg" alt="Coffee"><span class="pbadge hot">🔥 Hot</span><div class="pover"><button>👁</button><button>❤️</button></div></div>
+            <div class="pbody"><small>Home</small><h6>Coffee Maker</h6><div class="stars">⭐⭐⭐⭐⭐ <span>(149)</span></div><div class="prices"><b>₹7,499</b><s>₹9,999</s></div></div>
+            <div class="pfooter"><a href="single-product.html?id=p6" class="btn-out">View</a><button class="btn-add" onclick="addToCart('p6','Coffee Maker',7499)">🛒 Add</button></div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3 pcol" data-cat="Footwear">
+          <div class="pcard">
+            <div class="pimg"><img src="assets/images/yogamat.jpg" alt="Yoga Mat"><div class="pover"><button>👁</button><button>❤️</button></div></div>
+            <div class="pbody"><small>Sports</small><h6>Yoga Mat</h6><div class="stars">⭐⭐⭐⭐ <span>(72)</span></div><div class="prices"><b>₹2,499</b></div></div>
+            <div class="pfooter"><a href="single-product.html?id=p7" class="btn-out">View</a><button class="btn-add" onclick="addToCart('p7','Yoga Mat',2499)">🛒 Add</button></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="text-center mt-5"><a href="view-products.html" class="btn-main">View All Products →</a></div>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <div class="container">
+      <div class="nl-box">
+        <div><h2>Stay in the Loop 📬</h2><p>Get exclusive deals &amp; new arrivals straight to your inbox.</p></div>
+        <form onsubmit="subscribe(event)">
+          <input type="email" placeholder="Enter your email..." required />
+          <button type="submit" class="btn-main">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4 py-5">
+        <div class="col-lg-3 col-md-6">
+          <div class="fbrand">🛍️ ShopEase</div>
+          <p>Your one-stop destination for quality products at unbeatable prices.</p>
+          <div class="socials">
+            <a href="#">📘</a><a href="#">📸</a><a href="#">🐦</a><a href="#">▶️</a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h6>Quick Links</h6>
+          <ul><li><a href="index.html">Home</a></li><li><a href="view-products.html">Shop</a></li><li><a href="cart.html">Cart</a></li><li><a href="#">Wishlist</a></li></ul>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h6>Categories</h6>
+          <ul><li><a href="#">Electronics</a></li><li><a href="#">Clothing</a></li><li><a href="#">Footwear</a></li><li><a href="#">Sports</a></li></ul>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h6>Support</h6>
+          <ul><li><a href="#">Help Center</a></li><li><a href="#">Track Order</a></li><li><a href="#">Returns</a></li><li><a href="#">Privacy</a></li></ul>
+        </div>
+        <div class="col-lg-3 col-6">
+          <h6>Contact</h6>
+          <ul class="contact-list">
+            <li>📍 42 MG Road, Mumbai 400001</li>
+            <li>📞 +91 98765 43210</li>
+            <li>✉️ support@shopease.in</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fbot">
+        <p>© 2025 ShopEase. All rights reserved.</p>
+        <div>💳 🏦 📱 🔐</div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toasts"></div>
+  <button class="btt" id="btt" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const getCart = () => JSON.parse(localStorage.getItem('ec_cart') || '[]');
+    const saveCart = c => localStorage.setItem('ec_cart', JSON.stringify(c));
+
+    // Seed hardcoded products into localStorage so single-product.html can load them
+    const seedProducts = [
+      {id:'p1', name:'Wireless Headphones', category:'Electronics', brand:'SoundMax', price:6599, stock:50, status:'active', shortDescription:'Premium wireless headphones with ANC', description:'Experience immersive sound with active noise cancellation, 30-hour battery life, and a lightweight ergonomic design built for all-day comfort. Bluetooth 5.2 connectivity.', image:'assets/images/headphones.jpg'},
+      {id:'p2', name:'Running Sneakers', category:'Footwear', brand:'SpeedFit', price:9999, stock:35, status:'active', shortDescription:'Lightweight running shoes for all terrains', description:'Engineered for performance with breathable mesh upper, responsive cushioning, and durable rubber outsole. Perfect for daily runs and gym sessions.', image:'assets/images/sneakers.jpg'},
+      {id:'p3', name:'Leather Wallet', category:'Accessories', brand:'CraftHide', price:2999, stock:80, status:'active', shortDescription:'Slim genuine leather bifold wallet', description:'Handcrafted from full-grain leather with RFID blocking technology. Features 6 card slots, 2 cash compartments, and a slim profile that fits any pocket.', image:'assets/images/wallet.jpg'},
+      {id:'p4', name:'Smart Watch', category:'Electronics', brand:'TechWrist', price:16999, stock:20, status:'active', shortDescription:'Feature-rich smartwatch with health tracking', description:'Track your fitness goals with heart rate monitoring, SpO2 sensor, GPS, and 7-day battery life. Compatible with Android and iOS. Water resistant up to 50m.', image:'assets/images/smartwatch.jpg'},
+      {id:'p5', name:'Denim Jacket', category:'Clothing', brand:'UrbanWear', price:5499, stock:45, status:'active', shortDescription:'Classic denim jacket for all seasons', description:'Premium quality denim jacket with a relaxed fit. Features button closure, chest pockets, and side pockets. Available in multiple washes. Machine washable.', image:'assets/images/jacket.jpg'},
+      {id:'p6', name:'Coffee Maker', category:'Home', brand:'BrewMaster', price:7499, stock:30, status:'active', shortDescription:'Automatic drip coffee maker 12-cup', description:'Brew the perfect cup every time with programmable settings, built-in grinder, and thermal carafe that keeps coffee hot for 4 hours. Easy clean removable parts.', image:'assets/images/coffee.jpg'},
+      {id:'p7', name:'Yoga Mat', category:'Sports', brand:'ZenFlex', price:2499, stock:60, status:'active', shortDescription:'Non-slip eco-friendly yoga mat 6mm', description:'Made from natural rubber with a non-slip surface on both sides. 6mm thick for joint support. Includes carrying strap. Eco-friendly and sweat-resistant.', image:'assets/images/yogamat.jpg'},
+      {id:'p8', name:'Sunglasses', category:'Accessories', brand:'VisionPro', price:4199, stock:55, status:'active', shortDescription:'UV400 polarized sunglasses', description:'Polarized lenses with UV400 protection block 100% of harmful UVA and UVB rays. Lightweight TR90 frame with spring hinges for a comfortable all-day fit.', image:'assets/images/sunglasses.jpg'}
+    ];
+
+    (function seedToStorage() {
+      let stored = JSON.parse(localStorage.getItem('Products')) || [];
+      seedProducts.forEach(sp => {
+        if (!stored.find(p => p.id === sp.id)) stored.push(sp);
+      });
+      localStorage.setItem('Products', JSON.stringify(stored));
+    })();
+
+    function updateBadge() {
+      const n = getCart().reduce((s,i) => s+i.qty, 0);
+      const b = document.getElementById('cart-badge');
+      b.textContent = n; b.style.display = n ? 'flex' : 'none';
+    }
+
+    function addToCart(id, name, price) {
+      const sp = seedProducts.find(p => p.id === id);
+      const image = sp ? sp.image : '';
+      const cart = getCart(), ex = cart.find(i => i.id === id);
+      ex ? ex.qty++ : cart.push({id, name, price, image, qty:1});
+      saveCart(cart); updateBadge(); toast(`"${name}" added to cart 🛒`);
+    }
+
+    function toast(msg) {
+      const d = document.createElement('div');
+      d.className = 'toast-msg'; d.textContent = msg;
+      document.getElementById('toasts').appendChild(d);
+      setTimeout(() => d.classList.add('hide'), 2500);
+      setTimeout(() => d.remove(), 3000);
+    }
+
+    function filter(cat, btn) {
+      document.querySelectorAll('.ftab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.pcol').forEach(c => c.style.display = (cat==='all'||c.dataset.cat===cat) ? '' : 'none');
+    }
+
+    function subscribe(e) { e.preventDefault(); toast('🎉 Subscribed!'); e.target.reset(); }
+
+    window.addEventListener('scroll', () => document.getElementById('btt').classList.toggle('show', scrollY > 400));
+    updateBadge();
+  </script>
 </body>
-
 </html>

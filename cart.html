@@ -4,33 +4,189 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ShopEase – Cart</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/cart.css" />
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-brand"><span>🛍️</span> ShopEase</a>
-  <div class="nav-links">
-    <a href="index.html"><span>🏠</span> Home</a>
-    <a href="add-product.html"><span>➕</span> Add Product</a>
-    <a href="view-products.html"><span>📦</span> Products</a>
-    <a href="cart.html" class="cart-icon">🛒 Cart<span class="cart-badge" id="cart-badge" style="display:none">0</span></a>
-  </div>
-</nav>
-
-<div class="container">
-  <div class="page-header">
-    <div>
-      <div class="page-title">🛒 Shopping Cart</div>
-      <div class="page-subtitle" id="cart-count"></div>
+  <nav class="navbar navbar-expand-lg sticky-top site-nav">
+    <div class="container">
+      <a class="navbar-brand brand" href="index.html">🛍️ ShopEase</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="add-product.html">Add Product</a></li>
+          <li class="nav-item"><a class="nav-link" href="view-products.html">View Products</a></li>
+          <li class="nav-item"><a class="nav-link active" href="cart.html">Cart</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-3">
+          <div class="search-wrap"><span>🔍</span><input type="text" placeholder="Search products..." /></div>
+          <a href="cart.html" class="nav-ico cart-btn active">🛒<span class="cbadge" id="cart-badge" style="display:none">0</span></a>
+          <a href="#" class="nav-ico">👤</a>
+        </div>
+      </div>
     </div>
-    <a href="index.html" class="btn btn-outline">← Continue Shopping</a>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb-bar">
+    <div class="container">
+      <span><a href="index.html">Home</a> / <strong>Shopping Cart</strong></span>
+    </div>
   </div>
 
-  <div id="cart-content"></div>
-</div>
+  <!-- CART -->
+  <section class="sec" id="cart-section">
+    <div class="container" id="cart-content"></div>
+  </section>
 
-<script src="assets/js/app.js"></script>
-<script src="assets/js/cart.js"></script>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4 py-5">
+        <div class="col-lg-3 col-md-6">
+          <div class="fbrand">🛍️ ShopEase</div>
+          <p>Your one-stop destination for quality products at unbeatable prices.</p>
+          <div class="socials"><a href="#">📘</a><a href="#">📸</a><a href="#">🐦</a><a href="#">▶️</a></div>
+        </div>
+        <div class="col-lg-2 col-6"><h6>Quick Links</h6><ul><li><a href="index.html">Home</a></li><li><a href="view-products.html">Shop</a></li><li><a href="cart.html">Cart</a></li><li><a href="#">Wishlist</a></li></ul></div>
+        <div class="col-lg-2 col-6"><h6>Categories</h6><ul><li><a href="#">Electronics</a></li><li><a href="#">Clothing</a></li><li><a href="#">Footwear</a></li><li><a href="#">Sports</a></li></ul></div>
+        <div class="col-lg-2 col-6"><h6>Support</h6><ul><li><a href="#">Help Center</a></li><li><a href="#">Track Order</a></li><li><a href="#">Returns</a></li><li><a href="#">Privacy</a></li></ul></div>
+        <div class="col-lg-3 col-6"><h6>Contact</h6><ul class="contact-list"><li>📍 42 MG Road, Mumbai 400001</li><li>📞 +91 98765 43210</li><li>✉️ support@shopease.in</li></ul></div>
+      </div>
+      <div class="fbot"><p>© 2025 ShopEase. All rights reserved.</p><div>💳 🏦 📱 🔐</div></div>
+    </div>
+  </footer>
+
+  <div id="toasts"></div>
+  <button class="btt" id="btt" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const getCart = () => JSON.parse(localStorage.getItem('ec_cart') || '[]');
+    const saveCart = c => localStorage.setItem('ec_cart', JSON.stringify(c));
+
+    function updateBadge() {
+      const n = getCart().reduce((s,i) => s+i.qty, 0);
+      const b = document.getElementById('cart-badge');
+      b.textContent = n; b.style.display = n ? 'flex' : 'none';
+    }
+
+    function toast(msg, type='success') {
+      const d = document.createElement('div');
+      d.className = 'toast-msg' + (type==='error' ? ' terror' : '');
+      d.textContent = msg;
+      document.getElementById('toasts').appendChild(d);
+      setTimeout(() => d.classList.add('hide'), 2500);
+      setTimeout(() => d.remove(), 3000);
+    }
+
+    function renderCart() {
+      const cart = getCart();
+      updateBadge();
+      const content = document.getElementById('cart-content');
+
+      if (!cart.length) {
+        content.innerHTML = `
+          <div class="empty-box">
+            <div class="empty-ico">🛒</div>
+            <h4>Your cart is empty</h4>
+            <p class="text-muted">Looks like you haven't added anything yet.</p>
+            <a href="index.html" class="btn-main mt-3">Browse Products</a>
+          </div>`;
+        return;
+      }
+
+      const subtotal = cart.reduce((s,i) => s + Number(i.price) * i.qty, 0);
+      const shipping = subtotal >= 999 ? 0 : 99;
+      const tax = Math.round(subtotal * 0.18);
+      const total = subtotal + shipping + tax;
+
+      content.innerHTML = `
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-8">
+            <div class="cart-box">
+              <div class="cart-head">
+                <span>Product</span><span>Price</span><span>Qty</span><span>Total</span><span></span>
+              </div>
+              ${cart.map(item => `
+                <div class="cart-row">
+                  <div class="cart-prod">
+                    <img src="${item.image || 'https://picsum.photos/80/80?random=' + item.id}" alt="${item.name}" />
+                    <div>
+                      <div class="cart-name">${item.name}</div>
+                      <div class="cart-cat text-muted small">${item.category || ''}</div>
+                    </div>
+                  </div>
+                  <div class="cart-price">₹${Number(item.price).toLocaleString('en-IN')}</div>
+                  <div class="qty-wrap">
+                    <button onclick="changeQty('${item.id}',-1)">−</button>
+                    <span>${item.qty}</span>
+                    <button onclick="changeQty('${item.id}',1)">+</button>
+                  </div>
+                  <div class="cart-total">₹${(Number(item.price)*item.qty).toLocaleString('en-IN')}</div>
+                  <button class="cart-del" onclick="removeItem('${item.id}')">🗑</button>
+                </div>
+              `).join('')}
+            </div>
+            <div class="d-flex justify-content-between mt-3 flex-wrap gap-2">
+              <a href="index.html" class="btn-ghost-dark">← Continue Shopping</a>
+              <button class="btn-del-all" onclick="clearCart()">🗑 Clear Cart</button>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="summary-box">
+              <h5 class="fw-800 mb-4">Order Summary</h5>
+              <div class="sum-row"><span>Subtotal (${cart.reduce((s,i)=>s+i.qty,0)} items)</span><span>₹${subtotal.toLocaleString('en-IN')}</span></div>
+              <div class="sum-row"><span>Shipping</span><span>${shipping === 0 ? '<span class="text-success">FREE</span>' : '₹'+shipping}</span></div>
+              <div class="sum-row"><span>GST (18%)</span><span>₹${tax.toLocaleString('en-IN')}</span></div>
+              ${subtotal < 999 ? `<p class="small text-muted mt-1">Add ₹${(999-subtotal).toLocaleString('en-IN')} more for free shipping!</p>` : ''}
+              <div class="sum-total"><span>Total</span><span>₹${total.toLocaleString('en-IN')}</span></div>
+              <button class="btn-main w-100 mt-3" onclick="checkout()">Proceed to Checkout →</button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function changeQty(id, delta) {
+      const cart = getCart();
+      const item = cart.find(i => i.id == id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) saveCart(cart.filter(i => i.id != id));
+      else saveCart(cart);
+      renderCart();
+    }
+
+    function removeItem(id) {
+      saveCart(getCart().filter(i => i.id != id));
+      toast('Item removed', 'error');
+      renderCart();
+    }
+
+    function clearCart() {
+      if (confirm('Remove all items from cart?')) {
+        saveCart([]);
+        toast('Cart cleared', 'error');
+        renderCart();
+      }
+    }
+
+    function checkout() {
+      if (confirm('Proceed to checkout? (Demo)')) {
+        saveCart([]);
+        toast('🎉 Order placed successfully!');
+        renderCart();
+      }
+    }
+
+    window.addEventListener('scroll', () => document.getElementById('btt').classList.toggle('show', scrollY > 400));
+    renderCart();
+  </script>
 </body>
 </html>

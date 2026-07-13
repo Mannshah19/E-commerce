@@ -1,0 +1,32 @@
+/* ADD PRODUCT */
+.breadcrumb-bar { background:#fff; border-bottom:1px solid var(--border); padding:.75rem 0; font-size:.85rem; }
+.breadcrumb-bar a { color:var(--p); }
+
+.sec { padding:60px 0; }
+.sec-head h2 { font-size:clamp(1.5rem,3vw,2rem); font-weight:800; margin:.5rem 0 .3rem; }
+.sec-head p { color:var(--muted); font-size:.95rem; }
+.sec-head .pill { background:linear-gradient(135deg,#ede9fe,#fce7f3); color:var(--p); border:none; backdrop-filter:none; }
+
+.form-card { background:#fff; border-radius:var(--r); padding:1.75rem; box-shadow:0 4px 20px rgba(124,58,237,.07); border:1px solid var(--border); }
+.form-section-title { font-size:.82rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:1.25rem; padding-bottom:.6rem; border-bottom:1px solid var(--border); }
+
+label { display:block; font-size:.82rem; font-weight:600; color:var(--muted); margin-bottom:.35rem; text-transform:uppercase; letter-spacing:.04em; }
+.req { color:#ef4444; }
+
+.finput { width:100%; padding:.6rem .9rem; border:1.5px solid var(--border); border-radius:10px; font-size:.9rem; outline:none; background:var(--bg); color:var(--text); transition:.2s; }
+.finput:focus { border-color:var(--p); background:#fff; box-shadow:0 0 0 3px rgba(124,58,237,.1); }
+textarea.finput { resize:vertical; }
+
+.img-upload-box { border:2px dashed var(--border); border-radius:var(--r); min-height:200px; display:flex; align-items:center; justify-content:center; cursor:pointer; overflow:hidden; transition:.2s; position:relative; background:var(--bg); }
+.img-upload-box:hover { border-color:var(--p); background:#faf9ff; }
+.img-placeholder { display:flex; flex-direction:column; align-items:center; color:var(--muted); font-size:2rem; gap:.5rem; pointer-events:none; }
+.img-placeholder small { font-size:.8rem; }
+.img-upload-box img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+.img-upload-box input[type="file"] { display:none; }
+
+.btn-reset { width:100%; padding:.65rem; border-radius:50px; border:1.5px solid var(--border); background:#fff; color:var(--muted); font-size:.9rem; font-weight:600; cursor:pointer; transition:.2s; }
+.btn-reset:hover { border-color:var(--p); color:var(--p); }
+
+.form-msg { font-size:.875rem; font-weight:600; padding:.6rem 1rem; border-radius:10px; }
+.form-msg.success { background:#d1fae5; color:#065f46; }
+.form-msg.error { background:#fee2e2; color:#991b1b; }

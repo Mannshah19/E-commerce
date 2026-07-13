@@ -4,69 +4,271 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ShopEase – Add Product</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/add-product.css" />
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-brand"><span>🛍️</span> ShopEase</a>
-  <div class="nav-links">
-    <a href="index.html"><span>🏠</span> Home</a>
-    <a href="add-product.html"><span>➕</span> Add Product</a>
-    <a href="view-products.html"><span>📦</span> Products</a>
-    <a href="cart.html" class="cart-icon">🛒 Cart<span class="cart-badge" id="cart-badge" style="display:none">0</span></a>
-  </div>
-</nav>
-
-<div class="container">
-  <div class="form-card">
-    <div class="form-title" id="form-title">➕ Add New Product</div>
-    <form id="product-form">
-      <div class="form-group">
-        <label>Product Name *</label>
-        <input type="text" id="name" placeholder="e.g. Wireless Headphones" required />
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Price ($) *</label>
-          <input type="number" id="price" placeholder="0.00" step="0.01" min="0" required />
-        </div>
-        <div class="form-group">
-          <label>Stock Qty *</label>
-          <input type="number" id="stock" placeholder="0" min="0" required />
+  <nav class="navbar navbar-expand-lg sticky-top site-nav">
+    <div class="container">
+      <a class="navbar-brand brand" href="index.html">🛍️ ShopEase</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="add-product.html">Add Product</a></li>
+          <li class="nav-item"><a class="nav-link" href="view-products.html">View Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-3">
+          <div class="search-wrap"><span>🔍</span><input type="text" placeholder="Search products..." /></div>
+          <a href="cart.html" class="nav-ico cart-btn">🛒<span class="cbadge" id="cart-badge" style="display:none">0</span></a>
+          <a href="#" class="nav-ico">👤</a>
         </div>
       </div>
-      <div class="form-group">
-        <label>Category *</label>
-        <select id="category" required>
-          <option value="">Select category</option>
-          <option>Electronics</option>
-          <option>Clothing</option>
-          <option>Footwear</option>
-          <option>Accessories</option>
-          <option>Home</option>
-          <option>Sports</option>
-          <option>Books</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Description</label>
-        <textarea id="description" placeholder="Describe the product..."></textarea>
-      </div>
-      <div class="form-group">
-        <label>Image URL</label>
-        <input type="url" id="image" placeholder="https://..." />
-      </div>
-      <div class="form-actions">
-        <button type="submit" class="btn btn-primary" id="submit-btn">✓ Save Product</button>
-        <a href="view-products.html" class="btn btn-outline">Cancel</a>
-      </div>
-    </form>
-  </div>
-</div>
+    </div>
+  </nav>
 
-<script src="assets/js/app.js"></script>
-<script src="assets/js/add-product.js"></script>
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb-bar">
+    <div class="container">
+      <span><a href="index.html">Home</a> / <a href="view-products.html">Products</a> / <strong id="bc-label">Add Product</strong></span>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <section class="sec">
+    <div class="container">
+      <div class="sec-head mb-4">
+        <span class="pill">Seller Dashboard</span>
+        <h2 id="form-title">Add New Product</h2>
+        <p>Fill in the details below to list a new product</p>
+      </div>
+
+      <form id="add-product-form" novalidate>
+        <div class="row g-4">
+
+          <!-- LEFT -->
+          <div class="col-lg-8">
+            <div class="form-card">
+              <h6 class="form-section-title">Product Details</h6>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label>Product Name <span class="req">*</span></label>
+                  <input type="text" id="pname" class="finput" placeholder="e.g. Wireless Headphones" required />
+                </div>
+                <div class="col-md-6">
+                  <label>Category <span class="req">*</span></label>
+                  <select id="pcategory" class="finput" required>
+                    <option value="" disabled selected>Select category</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Footwear">Footwear</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Home">Home</option>
+                    <option value="Sports">Sports</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label>Brand</label>
+                  <input type="text" id="pbrand" class="finput" placeholder="e.g. Sony" />
+                </div>
+                <div class="col-md-4">
+                  <label>Price (₹) <span class="req">*</span></label>
+                  <input type="number" id="pprice" class="finput" min="0" placeholder="0" required />
+                </div>
+                <div class="col-md-4">
+                  <label>Stock Qty <span class="req">*</span></label>
+                  <input type="number" id="pstock" class="finput" min="0" placeholder="0" required />
+                </div>
+                <div class="col-md-4">
+                  <label>Status</label>
+                  <select id="pstatus" class="finput">
+                    <option value="active">Active</option>
+                    <option value="draft">Draft</option>
+                    <option value="out_of_stock">Out of Stock</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label>Short Description</label>
+                  <textarea id="pshortdesc" class="finput" rows="2" placeholder="Brief summary shown on product cards"></textarea>
+                </div>
+                <div class="col-12">
+                  <label>Full Description <span class="req">*</span></label>
+                  <textarea id="pdesc" class="finput" rows="5" placeholder="Detailed product description, features and specs" required></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT -->
+          <div class="col-lg-4">
+            <div class="form-card">
+              <h6 class="form-section-title">Product Image</h6>
+              <label>Main Image <span class="req">*</span></label>
+              <div class="img-upload-box" id="img-upload-box">
+                <div class="img-placeholder" id="img-placeholder">📷<br><small>Click to upload</small></div>
+                <img id="img-preview" src="" alt="" style="display:none" />
+                <input type="file" id="product-main-image" accept="image/*" />
+              </div>
+              <div class="mt-4 d-flex flex-column gap-2">
+                <button type="submit" class="btn-main w-100" id="submit-btn">✅ Publish Product</button>
+                <button type="reset" class="btn-reset w-100" onclick="resetForm()">🔄 Reset Form</button>
+              </div>
+              <div id="form-msg" class="form-msg mt-3"></div>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4 py-5">
+        <div class="col-lg-3 col-md-6">
+          <div class="fbrand">🛍️ ShopEase</div>
+          <p>Your one-stop destination for quality products at unbeatable prices.</p>
+          <div class="socials"><a href="#">📘</a><a href="#">📸</a><a href="#">🐦</a><a href="#">▶️</a></div>
+        </div>
+        <div class="col-lg-2 col-6"><h6>Quick Links</h6><ul><li><a href="index.html">Home</a></li><li><a href="view-products.html">Shop</a></li><li><a href="cart.html">Cart</a></li><li><a href="#">Wishlist</a></li></ul></div>
+        <div class="col-lg-2 col-6"><h6>Categories</h6><ul><li><a href="#">Electronics</a></li><li><a href="#">Clothing</a></li><li><a href="#">Footwear</a></li><li><a href="#">Sports</a></li></ul></div>
+        <div class="col-lg-2 col-6"><h6>Support</h6><ul><li><a href="#">Help Center</a></li><li><a href="#">Track Order</a></li><li><a href="#">Returns</a></li><li><a href="#">Privacy</a></li></ul></div>
+        <div class="col-lg-3 col-6"><h6>Contact</h6><ul class="contact-list"><li>📍 42 MG Road, Mumbai 400001</li><li>📞 +91 98765 43210</li><li>✉️ support@shopease.in</li></ul></div>
+      </div>
+      <div class="fbot"><p>© 2025 ShopEase. All rights reserved.</p><div>💳 🏦 📱 🔐</div></div>
+    </div>
+  </footer>
+
+  <div id="toasts"></div>
+  <button class="btt" id="btt" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const getCart = () => JSON.parse(localStorage.getItem('ec_cart') || '[]');
+    function updateBadge() {
+      const n = getCart().reduce((s,i) => s+i.qty, 0);
+      const b = document.getElementById('cart-badge');
+      b.textContent = n; b.style.display = n ? 'flex' : 'none';
+    }
+
+    function toast(msg, type='success') {
+      const d = document.createElement('div');
+      d.className = 'toast-msg' + (type==='error' ? ' terror' : '');
+      d.textContent = msg;
+      document.getElementById('toasts').appendChild(d);
+      setTimeout(() => d.classList.add('hide'), 2500);
+      setTimeout(() => d.remove(), 3000);
+    }
+
+    // Image preview
+    const mainImageInput = document.getElementById('product-main-image');
+    const imgPreview = document.getElementById('img-preview');
+    const imgPlaceholder = document.getElementById('img-placeholder');
+    const imgBox = document.getElementById('img-upload-box');
+
+    imgBox.addEventListener('click', () => mainImageInput.click());
+    mainImageInput.addEventListener('change', function() {
+      const file = this.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        imgPreview.src = e.target.result;
+        imgPreview.style.display = 'block';
+        imgPlaceholder.style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const pId = params.get('id');
+
+    if (pId) {
+      const products = JSON.parse(localStorage.getItem('Products')) || [];
+      const product = products.find(p => p.id == pId);
+      if (product) {
+        document.getElementById('form-title').textContent = 'Edit Product';
+        document.getElementById('bc-label').textContent = 'Edit Product';
+        document.getElementById('submit-btn').textContent = '✅ Update Product';
+        document.getElementById('pname').value = product.name;
+        document.getElementById('pcategory').value = product.category;
+        document.getElementById('pbrand').value = product.brand || '';
+        document.getElementById('pprice').value = product.price;
+        document.getElementById('pstock').value = product.stock;
+        document.getElementById('pstatus').value = product.status;
+        document.getElementById('pshortdesc').value = product.shortDescription || '';
+        document.getElementById('pdesc').value = product.description || '';
+        if (product.image) {
+          imgPreview.src = product.image;
+          imgPreview.style.display = 'block';
+          imgPlaceholder.style.display = 'none';
+          mainImageInput.removeAttribute('required');
+        }
+      }
+    }
+
+    document.getElementById('add-product-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!this.checkValidity()) { this.reportValidity(); return; }
+
+      function saveProduct(imageData) {
+        let products = JSON.parse(localStorage.getItem('Products')) || [];
+        let editIndex = pId ? products.findIndex(p => p.id == pId) : -1;
+
+        const product = {
+          id: pId ? (isNaN(pId) ? pId : Number(pId)) : Date.now(),
+          name: document.getElementById('pname').value,
+          category: document.getElementById('pcategory').value,
+          brand: document.getElementById('pbrand').value,
+          price: document.getElementById('pprice').value,
+          stock: document.getElementById('pstock').value,
+          status: document.getElementById('pstatus').value,
+          shortDescription: document.getElementById('pshortdesc').value,
+          description: document.getElementById('pdesc').value,
+          image: imageData
+        };
+
+        if (editIndex !== -1) {
+          products[editIndex] = product;
+        } else {
+          products.push(product);
+        }
+
+        localStorage.setItem('Products', JSON.stringify(products));
+
+        const msg = document.getElementById('form-msg');
+        msg.textContent = editIndex !== -1 ? '✅ Product updated successfully!' : '✅ Product added successfully!';
+        msg.className = 'form-msg success';
+        toast(msg.textContent);
+        setTimeout(() => location.href = 'view-products.html', 1200);
+      }
+
+      if (mainImageInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = () => saveProduct(reader.result);
+        reader.readAsDataURL(mainImageInput.files[0]);
+      } else if (pId) {
+        const products = JSON.parse(localStorage.getItem('Products')) || [];
+        const existing = products.find(p => p.id == pId);
+        saveProduct(existing ? existing.image : '');
+      } else {
+        alert('Please select a main image');
+      }
+    });
+
+    function resetForm() {
+      imgPreview.src = ''; imgPreview.style.display = 'none';
+      imgPlaceholder.style.display = 'flex';
+      document.getElementById('form-msg').textContent = '';
+    }
+
+    window.addEventListener('scroll', () => document.getElementById('btt').classList.toggle('show', scrollY > 400));
+    updateBadge();
+  </script>
 </body>
 </html>
