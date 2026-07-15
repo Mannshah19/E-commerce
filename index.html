@@ -249,11 +249,13 @@
     ];
 
     (function seedToStorage() {
-      let stored = JSON.parse(localStorage.getItem('Products')) || [];
+      if (localStorage.getItem('Products_seeded')) return;
+      const stored = JSON.parse(localStorage.getItem('Products')) || [];
       seedProducts.forEach(sp => {
         if (!stored.find(p => p.id === sp.id)) stored.push(sp);
       });
       localStorage.setItem('Products', JSON.stringify(stored));
+      localStorage.setItem('Products_seeded', '1');
     })();
 
     function updateBadge() {
