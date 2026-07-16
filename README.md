@@ -19,23 +19,22 @@ A lightweight, modern e-commerce frontend built with **HTML + CSS + Bootstrap + 
 
 > images are referenced from `assets/images/`.
 
-- **Home** (`index.html`)
+- **Home**
   
   ![Home](assets/images/home.png)
 
-- **View Products** (`view-products.html`)
+- **View Products**
   
   ![View Products](assets/images/view-products.png)
 
-- **Add / Edit Product** (`add-product.html`)
-  
+- **Add / Edit Product** 
   ![Add Product](assets/images/add-product.png)
 
-- **Single Product** (`single-product.html?id=...`)
+- **Single Product** 
   
   ![Single Product](assets/images/single-product.png)
 
-- **Cart** (`cart.html`)
+- **Cart**
   
   ![Cart](assets/images/cart.png)
 
