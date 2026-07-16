@@ -17,27 +17,27 @@ A lightweight, modern e-commerce frontend built with **HTML + CSS + Bootstrap + 
 
 ## 🖼️ Screens
 
-> Screenshots are referenced from `assets/screenshots/`.
+> images are referenced from `assets/images/`.
 
 - **Home** (`index.html`)
   
-  ![Home](assets/screenshots/home.png)
+  ![Home](assets/images/home.png)
 
 - **View Products** (`view-products.html`)
   
-  ![View Products](assets/screenshots/view-products.png)
+  ![View Products](assets/images/view-products.png)
 
 - **Add / Edit Product** (`add-product.html`)
   
-  ![Add Product](assets/screenshots/add-product.png)
+  ![Add Product](assets/images/add-product.png)
 
 - **Single Product** (`single-product.html?id=...`)
   
-  ![Single Product](assets/screenshots/single-product.png)
+  ![Single Product](assets/images/single-product.png)
 
 - **Cart** (`cart.html`)
   
-  ![Cart](assets/screenshots/cart.png)
+  ![Cart](assets/images/cart.png)
 
 ---
 
