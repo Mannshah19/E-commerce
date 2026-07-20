@@ -38,6 +38,10 @@ A lightweight, modern e-commerce frontend built with **HTML + CSS + Bootstrap + 
   
   ![Cart](assets/images/cart.png)
 
+  ### Video Walkthrough
+
+[▶ Watch Demo Video](https://drive.google.com/file/d/13s8RWCE_BRQhvyfZtMDxHGGfnCa9qqd6/view?usp=sharing)
+
 ---
 
 ## 🚀 How it Works (Demo)
